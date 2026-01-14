@@ -10,7 +10,12 @@ With this simple function, a rolling average can be created, with the only requi
 DEFINE
 	/// RollingAvgMonths:
 	/// Averages the monthly values of a measure over the last defined N months, ending at the deifned max date
-	FUNCTION RollingAvgMonths = (metricExpr: anyref expr, dateCol: anyref expr, yearMonthCol: anyref expr, numMonths: scalar int64 val) =>
+	FUNCTION RollingAvgMonths = (
+        metricExpr: anyref expr, 
+        dateCol: anyref expr, 
+        yearMonthCol: anyref expr, 
+        numMonths: scalar int64 val) 
+        =>
 		VAR LastCurrentDate =
 		MAX(dateCol)
 		VAR Period =
@@ -39,4 +44,18 @@ DEFINE
 			)
 ```
 
+Once created, it can be inserted within Calculation items that can be inserted into visuals. For example, to calculate the rolling average of the previous 12 months, the following Calculation Item can be created, using the arguments created in the aforementioned function:
 
+```
+RollingAvg12M = RollingAvgMonths(
+    SELECTEDMEASURE(),
+    'Calendar'[Date],
+    'Calendar'[Year Month],
+    12
+)
+```
+
+Once the Calculation Group is inserted into a visual, users can select the visualizations they wish to view, with the following result.
+
+![Filtering using the Calc Group](image-1.png)
+![Line Chart with both items selected](image.png)
