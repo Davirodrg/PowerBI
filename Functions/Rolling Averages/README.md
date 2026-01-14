@@ -6,7 +6,8 @@ This situation can be entirely avoided with the use of basic, one-size-fits-all 
 
 With this simple function, a rolling average can be created, with the only requirements being having something to measure and a calendar table
 
-`DEFINE
+```
+DEFINE
 	/// RollingAvgMonths:
 	/// Averages the monthly values of a measure over the last defined N months, ending at the deifned max date
 	FUNCTION RollingAvgMonths = (metricExpr: anyref expr, dateCol: anyref expr, yearMonthCol: anyref expr, numMonths: scalar int64 val) =>
@@ -35,5 +36,7 @@ With this simple function, a rolling average can be created, with the only requi
 			IF(
 				NOT ISBLANK(LastCurrentDate),
 				Result
-			)`
+			)
+```
+
 
