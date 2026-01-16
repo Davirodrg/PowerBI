@@ -55,5 +55,5 @@ RollingAvg12M = RollingAvgMonths(
 
 Once the Calculation Group is inserted into a visual, users can select the visualizations they wish to view, with the following result.
 
-![Filtering using the Calc Group](image-1.png)
-![Line Chart with both items selected](image.png)
+![Filtering using the Calc Group](images/Filtering+DataPane.png)
+![Line Chart with both items selected](images/LineChart.png)
